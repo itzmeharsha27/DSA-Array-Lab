@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX 5
+#define MAX 5     // Maximum size of array
 
-int a[MAX], n = 0, pos, elem;
+int a[MAX];       // Array declaration
+int n = 0;        // Number of elements
+int pos, elem;   // Position and element variables
 
-/* Function declarations */
+// Function declarations
 void create();
 void display();
 void insert();
@@ -15,7 +17,7 @@ void main()
 {
     int choice;
 
-    /* Infinite loop for menu */
+    // Infinite loop for menu-driven program
     while (1)
     {
         printf("\n\n~~~~MENU~~~~");
@@ -27,6 +29,7 @@ void main()
         printf("\nEnter your choice: ");
         scanf("%d", &choice);
 
+        // Switch case for user choice
         switch (choice)
         {
         case 1: create(); break;
@@ -39,19 +42,18 @@ void main()
     }
 }
 
-/* Function to create array */
+// Function to create array
 void create()
 {
     int i;
     printf("\nEnter number of elements: ");
     scanf("%d", &n);
-
     printf("\nEnter elements: ");
     for (i = 0; i < n; i++)
         scanf("%d", &a[i]);
 }
 
-/* Function to display array */
+// Function to display array
 void display()
 {
     int i;
@@ -60,26 +62,22 @@ void display()
         printf("\nNo elements to display");
         return;
     }
-
     printf("\nArray elements: ");
     for (i = 0; i < n; i++)
         printf("%d ", a[i]);
 }
 
-/* Function to insert element */
+// Function to insert an element
 void insert()
 {
     int i;
-
     if (n == MAX)
     {
         printf("\nArray is full");
         return;
     }
-
     printf("\nEnter position: ");
     scanf("%d", &pos);
-
     printf("\nEnter element: ");
     scanf("%d", &elem);
 
@@ -88,31 +86,26 @@ void insert()
 
     a[pos] = elem;
     n++;
-
     display();
 }
 
-/* Function to delete element */
+// Function to delete an element
 void delete()
 {
     int i;
-
     if (n == 0)
     {
         printf("\nArray is empty");
         return;
     }
-
     printf("\nEnter position: ");
     scanf("%d", &pos);
 
     elem = a[pos];
-
     for (i = pos; i < n - 1; i++)
         a[i] = a[i + 1];
 
     n--;
-
     printf("\nDeleted element: %d", elem);
     display();
 }
