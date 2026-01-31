@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX 10
+#define MAX 5
 
 int a[MAX], n = 0, pos, elem;
 
+/* Function declarations */
 void create();
 void display();
 void insert();
@@ -14,6 +15,7 @@ void main()
 {
     int choice;
 
+    /* Infinite loop for menu */
     while (1)
     {
         printf("\n\n~~~~MENU~~~~");
@@ -37,39 +39,47 @@ void main()
     }
 }
 
+/* Function to create array */
 void create()
 {
     int i;
     printf("\nEnter number of elements: ");
     scanf("%d", &n);
+
     printf("\nEnter elements: ");
     for (i = 0; i < n; i++)
         scanf("%d", &a[i]);
 }
 
+/* Function to display array */
 void display()
 {
     int i;
     if (n == 0)
     {
-        printf("\nNo elements");
+        printf("\nNo elements to display");
         return;
     }
+
     printf("\nArray elements: ");
     for (i = 0; i < n; i++)
         printf("%d ", a[i]);
 }
 
+/* Function to insert element */
 void insert()
 {
     int i;
+
     if (n == MAX)
     {
-        printf("\nArray full");
+        printf("\nArray is full");
         return;
     }
+
     printf("\nEnter position: ");
     scanf("%d", &pos);
+
     printf("\nEnter element: ");
     scanf("%d", &elem);
 
@@ -78,25 +88,31 @@ void insert()
 
     a[pos] = elem;
     n++;
+
     display();
 }
 
+/* Function to delete element */
 void delete()
 {
     int i;
+
     if (n == 0)
     {
-        printf("\nArray empty");
+        printf("\nArray is empty");
         return;
     }
+
     printf("\nEnter position: ");
     scanf("%d", &pos);
 
     elem = a[pos];
+
     for (i = pos; i < n - 1; i++)
         a[i] = a[i + 1];
 
     n--;
+
     printf("\nDeleted element: %d", elem);
     display();
 }
